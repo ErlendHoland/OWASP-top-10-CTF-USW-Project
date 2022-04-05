@@ -8,3 +8,17 @@ Run with docker:
 3. sudo docker build -t ctf .
 4. sudo docker run -p 80:5000 -d ctf
 5. Access in browser http://localhost/
+
+Run in virtual environment:
+
+1. git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
+2. cd OWASP-top-10-CTF-USW-Project
+3. pip install virtualenv
+4. python -m venv env
+  Windows:
+  .\env\Scripts\activate
+  Kali:
+  source env/Scripts/activate
+5. pip install -r requirements.txt
+6. python app.py
+  
