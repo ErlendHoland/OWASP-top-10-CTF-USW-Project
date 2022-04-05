@@ -1,7 +1,7 @@
 # OWASP-top-10-CTF-USW-Project
 
 
-## Run with docker:
+# Run with docker:
 
 1. git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 2. cd OWASP-top-10-CTF-USW-Project
