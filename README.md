@@ -5,13 +5,13 @@
 
 ## Run with docker:
 
-''' 
+``` 
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 cd OWASP-top-10-CTF-USW-Project
 sudo docker build -t ctf .
 sudo docker run -p 80:5000 -d ctf
 Access in browser http://localhost/
-'''
+```
 
 ## Run in virtual environment:
 Windows:
