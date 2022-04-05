@@ -84,3 +84,14 @@ python app.py
 
 Access in browser http://localhost:5000/
 ```
+## Run without virtual environment:
+```
+git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
+
+cd OWASP-top-10-CTF-USW-Project
+
+pip install -r requirements.txt
+
+python app.py
+```
+Access in browser http://localhost:5000/
