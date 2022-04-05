@@ -23,13 +23,17 @@ Access in browser http://localhost/
 ### Windows:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-
+```
+```
 cd OWASP-top-10-CTF-USW-Project
-
+```
+```
 pip install virtualenv
-
+```
+```
 .\env\Scripts\activate
-
+```
+```
 python app.py
 ```
 Access in browser http://localhost:5000/
@@ -37,13 +41,17 @@ Access in browser http://localhost:5000/
 ### Linux:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-
+```
+```
 cd OWASP-top-10-CTF-USW-Project
-
+```
+```
 pip install virtualenv
-
+```
+```
 source env/Scripts/activate
-
+```
+```
 python app.py
 ```
 Access in browser http://localhost:5000/
@@ -54,17 +62,23 @@ Access in browser http://localhost:5000/
 ### Windows:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-
+```
+```
 cd OWASP-top-10-CTF-USW-Project
-
+```
+```
 pip install virtualenv
-
+```
+```
 python -m venv env
-
+```
+```
 .\env\Scripts\activate
-
+```
+```
 pip install -r requirements.txt
-
+```
+```
 python app.py
 ```
 Access in browser http://localhost:5000/
@@ -72,30 +86,37 @@ Access in browser http://localhost:5000/
 ### Linux:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-
+```
 cd OWASP-top-10-CTF-USW-Project
-
+```
+```
 pip install virtualenv
-
+```
+```
 python -m venv env
-
+```
+```
 source env/Scripts/activate
-
+```
+```
 pip install -r requirements.txt
-
+```
+```
 python app.py
-
 ```
 Access in browser http://localhost:5000/
 
 ## Run without virtual environment:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-
+```
+```
 cd OWASP-top-10-CTF-USW-Project
-
+```
+```
 pip install -r requirements.txt
-
+```
+```
 python app.py
 ```
 Access in browser http://localhost:5000/
