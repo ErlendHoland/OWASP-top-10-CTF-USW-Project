@@ -1,8 +1,10 @@
 # OWASP-top-10-CTF-USW-Project
 
 
-# Setup instructions:
+
 ## FLAG{Welcome_and_enjoy!}
+
+# Setup instructions:
 
 ## Run with docker:
 
