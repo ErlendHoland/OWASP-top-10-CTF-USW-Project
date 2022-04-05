@@ -1,7 +1,7 @@
 # OWASP-top-10-CTF-USW-Project
 
 
-<style>p{color:Green;}</style>
+![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `#1589F0`
 
 
 ## FLAG{Welcome_and_enjoy!}
