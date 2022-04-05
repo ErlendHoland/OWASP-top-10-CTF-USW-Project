@@ -87,6 +87,7 @@ Access in browser http://localhost:5000/
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 ```
+```
 cd OWASP-top-10-CTF-USW-Project
 ```
 ```
