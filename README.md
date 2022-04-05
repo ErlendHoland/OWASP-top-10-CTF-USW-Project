@@ -15,10 +15,12 @@ Run in virtual environment:
 2. cd OWASP-top-10-CTF-USW-Project
 3. pip install virtualenv
 4. python -m venv env
+5. 
   Windows:
   .\env\Scripts\activate
+  
   Kali:
   source env/Scripts/activate
-5. pip install -r requirements.txt
-6. python app.py
+6. pip install -r requirements.txt
+7. python app.py
   
