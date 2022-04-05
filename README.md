@@ -31,7 +31,7 @@ python app.py
 ```
 Access in browser http://localhost:5000/
 
-Linux:
+### Linux:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 
@@ -43,7 +43,7 @@ source env/Scripts/activate
 
 python app.py
 ```
-Access in browser http://localhost:5000/
+### Access in browser http://localhost:5000/
 
 
 ## Run in virtual environment from scratch:
