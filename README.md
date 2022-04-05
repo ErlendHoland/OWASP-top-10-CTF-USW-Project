@@ -43,12 +43,12 @@ source env/Scripts/activate
 
 python app.py
 ```
-### Access in browser http://localhost:5000/
+Access in browser http://localhost:5000/
 
 
 ## Run in virtual environment from scratch:
 
-Windows:
+### Windows:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 
@@ -66,7 +66,7 @@ python app.py
 ```
 Access in browser http://localhost:5000/
 
-Linux:
+### Linux:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 
@@ -82,8 +82,9 @@ pip install -r requirements.txt
 
 python app.py
 
-Access in browser http://localhost:5000/
 ```
+Access in browser http://localhost:5000/
+
 ## Run without virtual environment:
 ```
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
