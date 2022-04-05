@@ -2,6 +2,7 @@
 
 
 # Setup instructions:
+## FLAG{Welcome_and_enjoy!}
 
 ## Run with docker:
 
