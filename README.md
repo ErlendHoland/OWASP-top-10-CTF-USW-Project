@@ -2,7 +2,10 @@
 
 
 
-## + FLAG{Welcome_and_enjoy!}
+![#c5f015](https://via.placeholder.com/15/f03c15/000000?text=+) `#c5f015`
+
+
+## FLAG{Welcome_and_enjoy!}
 
 # Setup instructions:
 
