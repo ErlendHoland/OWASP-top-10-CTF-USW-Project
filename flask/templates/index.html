@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="/static/css/index.css" rel="stylesheet">
+
+
+<script src="https://kit.fontawesome.com/7846185e0c.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="grey-bg container-fluid">
+  <section id="minimal-statistics">
+    <div class="row">
+      <div class="col-12 mt-3 mb-1">
+        
+        <center> <h2 class="text-uppercase">Welcome to the OWASP Top 10 CTF</h2>
+        <p>Version 1.0</p></center>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/broken_access" class="btn btn-dark stretched-link">1. Broken Access Control</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <i class='fas fa-door-open' style='font-size:48px;color:red'></i>
+                <div class="align-self-center">
+                </div>
+                <div class="media-body text-right">
+                    <center>
+                  <span>Insecure Direct Object Reference</span>
+                    </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/cryptographic_failures" class="btn btn-dark stretched-link">2. Cryptographic Failures</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <i class="material-icons" style="font-size:48px;color:red">no_encryption</i>
+                <div class="align-self-center"></div>
+                <div class="media-body text-right">
+                    <center>
+                  <span>Broken Crypto Algorithm </span>
+                    </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/injection" class="btn btn-dark stretched-link">3. Injection</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <i class='fas fa-syringe' style='font-size:48px;color:red'></i>
+                <div class="align-self-center"></div>
+                <div class="media-body text-right">
+                    <center>
+                  <span>Server Side Template Injection</span>
+                  <p>Read the secret flask key</p>
+                    </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/insecure_design" class="btn btn-dark stretched-link">4. Insecure design</a>
+          <div class="card-content">
+            <div class="card-body">
+              
+              <div class="media d-flex">
+                <i class='fas fa-fill-drip' style='font-size:48px;color:red'></i>
+                <div class="align-self-center">
+                </div>
+                <div class="media-body text-right">
+                  <center>
+                  <span>Insufficiently Protected Credentials</span>
+                  <p>Take advantage of a poorly designed system</p>
+                </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/security_misconfiguration" class="btn btn-dark stretched-link">5. Security Misconfiguration</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <i class='fas fa-wrench' style='font-size:48px;color:red'></i>
+                <div class="media-body text-right">
+                    <center>
+                  <span>Coming soon</span>
+                    </center>
+                </div>
+                <div class="align-self-center">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/vulncomponent" class="btn btn-dark stretched-link">6. Vulnerable and Outdated Components</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <i class='far fa-clock' style='font-size:48px;color:red'></i>
+                <div class="media-body text-right">
+                    <center>
+                  <span>Coming soon</span>
+                  </center>
+                </div>
+                <div class="align-self-center">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/authentication_failure" class="btn btn-dark stretched-link">7. Identification and Authentication Failures</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-right">
+                    <center>
+                  <span>Coming soon</span>
+                </center>
+                </div>
+                <div class="align-self-center">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/software_data_integrity_failure" class="btn btn-dark stretched-link">8. Software and Data Integrity Failures</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-right">
+                    <center>
+                  <span>Coming soon</span>
+                  </center>
+                </div>
+                <div class="align-self-center">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/log_and_monitor_failure" class="btn btn-dark stretched-link">9. Security Logging and Monitoring Failures</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-right">
+                    <center>
+                  <span>Coming soon</span>
+                  </center>
+                </div>
+                <div class="align-self-center">
+                </div>
+              </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <a href="/ssrf" class="btn btn-dark stretched-link">10. Server-Side Request Forgery</a>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-right">
+                    <center>
+                  <span>Coming soon</span>
+                  </center>
+                </div>
+                <div class="align-self-center">
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  </div>
+
+
+  <div class="footer">
+    <h3>Feedback is very much appreciated :)</h3>
+    <a href="https://forms.office.com/r/wvxfFfrtwM" class="link-success">https://forms.office.com/r/wvxfFfrtwM</a>
+</div>
+{% endblock %}

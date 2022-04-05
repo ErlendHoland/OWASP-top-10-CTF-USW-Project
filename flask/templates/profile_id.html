@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="static/css/profile.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+
+<style>
+body{
+    background-color: #999999;
+}
+</style>
+
+<a href="/broken_access" class="btn btn-dark btn-lg" role="button">Back</a>
+<div class="container mt-5 mb-4 p-4 d-flex justify-content-center">
+    <div class="card p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+            <button class="btn btn-secondary"> <img src="{{ profilepic }}" height="100" width="100" /></button> 
+            <span class="name mt-3">{{ username }}</span>
+            <div class="text mt-3"> <span>Age: {{ age }} </span> </div>
+            <div class="text mt-3"> <span>Profession: <span class="follow">{{ profession }}</span></span> </div>
+            <div class="text mt-3"> <span>Social security number: {{ scn }} </span> </div>
+            <div class="text mt-3"> <span>Flag: {{ flag }} </span> </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

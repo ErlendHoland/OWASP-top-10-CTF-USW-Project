@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="/static/css/injection.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+
+<nav class="navbar navbar-expand-sm navbar-dark"> <img src="{{current_user.profilepic}}" width="20" height="20" class="d-inline-block align-top rounded-circle" alt=""> 
+    <a class="navbar-brand ml-2" href="" data-abc="true">{{current_user.username}}</a> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon"></span> </button>
+    <div class="end">
+        
+    </div>
+</nav>
+
+<a href="/" class="btn btn-dark btn-lg" role="button">Back</a>
+
+
+<form method='POST' action="">
+<button class="btn btn-danger btn-lg" value="hint" name="hint" class="btn btn-danger btn-lg">Hint</button>
+</form>
+
+{% for message in get_flashed_messages() %}
+{% if message == "Use Jinja2 syntax and call upon the flask config object" %}
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <center>
+    <strong>{{ message }}</strong>
+    </center>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria label="close"></button>
+{% endif %}
+</div>
+{% endfor %}
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 col-md-6 col-12 pb-4">
+                <h1>Comments</h1>
+                <div class="comment mt-4 text-justify float-left"> <img src="{{current_user.profilepic}}" alt="" class="rounded-circle" width="40" height="40">
+                    <h4>{{current_user.username}}</h4> <span>- {{time}}</span> <br>
+                    <p>Comment: </p>
+                    <p>{{ output }} </p>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                <h1>Post a comment</h1>
+                <form id="algin-form" method="POST" action="">
+                    <center>
+                    </center>
+                        {{form.comment}}
+                        {{form.submit(class="btn form-control btn-warning rows=5")}}
+                    </div>
+                </form>
+
+            </div>
+            
+            </div>
+            
+            </div>
+            </section>
+            
+
+            
+
+            <div class="footer">
+                <h3>About us:</h3>
+                <h3>We love the Jinja2 template engine</h3>
+            </div>
+
+{% endblock %}

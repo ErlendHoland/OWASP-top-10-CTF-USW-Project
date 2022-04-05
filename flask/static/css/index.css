@@ -1,0 +1,25 @@
+
+
+.grey-bg {  
+background-color: #999999;
+}
+.text-uppercase {
+  color:rgb(0, 0, 0)
+}
+.card-body {
+  color: rgb(0, 0, 0);
+}
+span {
+  text-align: center;
+}
+
+.footer{ 
+    position: fixed;     
+    text-align: center;    
+    bottom: 40px; 
+    width: 100%;
+} 
+
+.link-success {
+    font-size: large;
+}

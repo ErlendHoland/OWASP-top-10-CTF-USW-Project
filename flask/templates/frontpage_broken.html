@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="static/css/profile.css" rel="stylesheet" type="text/css">
+
+
+{% endblock %}
+
+
+
+
+{% block body %}
+<a href="/" class="btn btn-dark btn-lg" role="button">Back</a>
+
+<form method='POST' action="">
+    <button class="btn btn-danger btn-lg" value="hint" name="hint" class="btn btn-danger btn-lg">Hint</button>
+</form>
+
+{% for message in get_flashed_messages() %}
+{% if message == "URL Tampering" %}
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <center>
+    <strong>{{ message }}</strong>
+    </center>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria label="close"></button>
+{% endif %}
+</div>
+{% endfor %}
+
+<center>
+<h1>Welcome {{ usr }}</h1>
+<p>Checkout your confidential user profile below</p>
+
+<form method='GET' action="">
+    <button class="btn btn-success btn-lg" name="id" value="{{current_user.id}}" class="btn btn-danger btn-lg">Profile</button>
+</form>
+
+
+
+
+
+
+
+{% endblock %}

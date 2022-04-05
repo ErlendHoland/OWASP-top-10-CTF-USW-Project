@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="/static/css/insecure.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+
+<a href="/" class="btn btn-dark btn-lg" role="button">Back</a>
+
+<form method='POST' action="">
+    <button class="btn btn-danger btn-lg" value="hint" name="hint" class="btn btn-danger btn-lg">Hint</button>
+    </form>
+    {% for message in get_flashed_messages() %}
+    {% if message == "Do some research on Elon Musk and recover his password" %}
+    <center>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria label="close"></button>
+    {% endif %}
+    </div>
+    </center>
+    {% endfor %}
+
+<div class="container container-table">
+    <div class="row vertical-center-row">
+        <h2>Login</h2>
+            <form class="form-control-lg" method="POST" action="">
+                <div>{{ form.hidden_tag() }}
+                    <label for="username">Username</label>
+                <div>{{ form.username (class="form-control-lg mb-2") }}</div>
+                <label for="password">Password</label>
+                <div>{{ form.password (class="form-control-lg mb-2") }} </div>
+                <div>{{ form.submit(class="btn btn-dark btn-block fa-lg mb-3") }} </div>
+            </form> 
+            <a href="/insecure_design/pwreset">Forgotten password?</a> 
+        </div>
+        <center>
+            
+            {% for message in get_flashed_messages() %}
+            {% if message == "Wrong username or password" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ message }}</strong>
+                <center>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria label="close"></button>
+                </center>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </center>
+    </div>
+
+
+
+{% endblock %}

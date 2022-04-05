@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="/static/css/insecure.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+<a href="/insecure_design" class="btn btn-dark btn-lg" role="button">Back</a>
+
+<h3>You are logged in as {{ current_user.username }}</h3>
+<center>
+<h1>Why do I always get hacked?</h1>
+
+<img src="https://i.insider.com/5c0db8d6f87e1e3fae4fd632?width=750&format=jpeg&auto=webp" class="img-fluid" alt="Responsive image" width="30%">
+
+<h3>Flag{Ins3cure_D3s1gn}</h3>
+</center>
+
+
+
+
+
+
+{% endblock %}
