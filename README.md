@@ -1,7 +1,7 @@
 # OWASP-top-10-CTF-USW-Project
 
 
-# 
+# Setup instructions:
 
 ## Run with docker:
 
@@ -18,19 +18,32 @@ Access in browser http://localhost/
 
 ## Run in virtual environment:
 Windows:
-1. git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-2. cd OWASP-top-10-CTF-USW-Project
-3. pip install virtualenv
-4. .\env\Scripts\activate
-5. python app.py
+```
+git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
+
+cd OWASP-top-10-CTF-USW-Project
+
+pip install virtualenv
+
+.\env\Scripts\activate
+
+python app.py
+```
+Access in browser http://localhost:5000/
 
 Linux:
-1. git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
-2. cd OWASP-top-10-CTF-USW-Project
-3. pip install virtualenv
-4. source env/Scripts/activate
-5. python app.py
-6. Access in browser http://localhost:5000/
+```
+git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
+
+cd OWASP-top-10-CTF-USW-Project
+
+pip install virtualenv
+
+source env/Scripts/activate
+
+python app.py
+```
+Access in browser http://localhost:5000/
 
 
 
