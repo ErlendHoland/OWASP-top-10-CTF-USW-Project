@@ -17,6 +17,9 @@ Windows:
 3. pip install virtualenv
 4. python -m venv env
 5. .\env\Scripts\activate
+6. pip install -r requirements.txt
+7. python app.py
+8. Access in browser http://localhost:5000
 
 Linux:
 1. git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
@@ -26,4 +29,5 @@ Linux:
 5. source env/Scripts/activate
 6. pip install -r requirements.txt
 7. python app.py
+8. Access in browser http://localhost:5000
  
