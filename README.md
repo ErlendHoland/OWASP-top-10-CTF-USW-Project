@@ -13,9 +13,8 @@ cd OWASP-top-10-CTF-USW-Project
 sudo docker build -t ctf .
 
 sudo docker run -p 80:5000 -d ctf
-
-Access in browser http://localhost/
 ```
+Access in browser http://localhost/
 
 ## Run in virtual environment:
 Windows:
