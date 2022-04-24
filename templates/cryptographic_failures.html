@@ -12,9 +12,10 @@
     <button class="btn btn-danger btn-lg" value="hint" name="hint" class="btn btn-danger btn-lg">Hint</button>
 </form>
 
-    <form method='POST' action="">
-        <button class="btn btn-success btn-lg" value="download" name="download" class="btn btn-danger btn-lg">Download</button>
-        </form>
+<form method='POST' action="">
+    <button class="btn btn-success btn-lg" value="download" name="download" class="btn btn-danger btn-lg">Download</button>
+</form>
+
 
     {% for message in get_flashed_messages() %}
     {% if message == "Convert the password hash to clear-text" %}
@@ -55,9 +56,10 @@
                 {% endif %}
                 </div>
                 {% endfor %}
-            </center>
-            </div>
+                    </center>
+        </div>
     </div>
+
 
 
 

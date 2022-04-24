@@ -1,8 +1,8 @@
+from cmath import e
 from datetime import date, datetime
-
-
 from flask import Flask, flash, render_template_string, send_file, session
 from flask_sqlalchemy import SQLAlchemy
+from pkg_resources import require
 from sqlalchemy import update
 from flask_login import login_user, current_user, LoginManager, UserMixin, login_required
 from flask import render_template, request, redirect
@@ -13,9 +13,11 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired
 import hashlib
 
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'FLAG{ServerSideTemplateInjecti0n}' # sets the flag as secret key
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_BINDS'] = {'User': 'sqlite:///db.db'}
 
@@ -28,14 +30,13 @@ login_manager.init_app(app)
 def index():
     return render_template('index.html')
 
-######################################Broken Access Control Start#########################################
+######################################BROKEN ACCESS CONTROL START#########################################
 """
 Broken access control
 https://www.toxicsolutions.net/2020/07/exploit-a-simple-idor-vulnerability-with-python/
 """
-@login_manager.user_loader
-def load_user(user_id):
-    return Users.query.get(int(user_id))
+
+
 
 # broken access users
 class Users(db.Model, UserMixin):
@@ -49,8 +50,27 @@ class Users(db.Model, UserMixin):
     flag = db.Column(db.Integer, nullable=True)
 
 db.create_all()
-admin_user = Users(username='admin', password='admin', age=30, profession="System admin", profilepic="https://www.crimsondesigns.com/blog-images/website-hacker-at-work.jpg",scn="123456", flag='FLAG{Insecure_Direct_øbject_Reference}')
-regular_user = Users(username='user1', password='user1', age=25, profession="Student", profilepic="https://i.imgur.com/wvxPV9S.png", scn=54321, flag="Flag is for admins")
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
+
+
+admin_user = Users(username='admin', 
+                   password='admin', 
+                   age=30, 
+                   profession="System admin", 
+                   profilepic="https://www.crimsondesigns.com/blog-images/website-hacker-at-work.jpg",
+                   scn="123456", 
+                   flag='FLAG{Insecure_Direct_øbject_Reference}')
+
+
+regular_user = Users(username='user1', 
+                     password='user1', 
+                     age=25, profession="Student", 
+                     profilepic="https://i.imgur.com/wvxPV9S.png", 
+                     scn=54321, 
+                     flag="Flag is for admins")
 
 try:
     db.session.add(admin_user)
@@ -58,7 +78,6 @@ try:
     db.session.commit()
 except:
     print('Duplicated users')
-
 
 
 @app.route('/broken_access', methods=['GET', 'POST'])
@@ -70,8 +89,7 @@ def broken_access():
     if str(request.form.get('hint')) == 'hint':
         flash('URL Tampering')
 
-    usr = current_user.username
-    req = request.args.get('id') # gets value of get request
+    req = request.args.get('id')   # gets value of get request
     if request.args.get('id'):
         try:
             ids = db.engine.execute('SELECT username, age, profession, profilepic, scn, flag FROM users WHERE id = {}'.format(req)) # req is key value of the get request, and is placed into sql query
@@ -85,18 +103,18 @@ def broken_access():
             return render_template('profile_id.html', username=username, age=age, profession=profession, profilepic=profilepic, scn=scn, flag=flag)
         except Exception:
             pass
-    return render_template('frontpage_broken.html', usr=usr)
+    return render_template('frontpage_broken.html')
 
 
-#########################################Broken access End########################################################
+#########################################BROKEN ACCESS END########################################################
 
-#########################################Cryptographic failures Start########################################################
+#########################################CRYPTOGRAPHIC FAILURES START########################################################
 """
 Cryptographic failures
 """
 
 class User(db.Model, UserMixin):
-    __bind_key__ = 'User' # references the db bind
+    __bind_key__ = 'User'                                                                                               # references the db bind
     id = db.Column(db.Integer, primary_key=True, unique=True)
     username = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
@@ -122,25 +140,27 @@ class Password(FlaskForm):
 @app.route('/cryptographic_failures', methods=['GET', 'POST'])
 def crypto_fail():
     password = Password()
-    addusers() # adds above users into database
-    if str(request.form.get('download')) == 'download':
-        return send_file('db.db')
+    addusers() 
 
     if str(request.form.get('hint')) == 'hint':
         flash("Convert the password hash to clear-text")
 
-    if str(request.form.get('password')) == 'changepw123':
+    elif str(request.form.get('download')) == 'download':
+        return send_file('db.db')
+
+    elif str(request.form.get('password')) == 'changepw123':
         flash('FLAG{CryptØgraph1c_F4ilurez}')
+
     else:
         flash('Wrong password')
     return render_template('cryptographic_failures.html', form=password)
 
 
 
-#########################################Cryptographic failures End########################################################
+#########################################CRYPTOGRAPHIC FAILURES END########################################################
 
 
-###################################Injection Start###################################################
+##########################################INJECTION START###################################################
 """
 INJECTION
 """
@@ -152,89 +172,30 @@ class Comment(FlaskForm):
 @app.route('/injection', methods=['GET', 'POST'])
 def injection():
     form = Comment()
-    #adds time to post
-    time = date.today()
+    time = date.today()                                                                     #adds time to post
     time = time.strftime("%B %d, %Y")
-    #logs in user
-    user = Users.query.filter_by(username='user1', password='user1').first()    
+    user = Users.query.filter_by(username='user1', password='user1').first()                #logs in user
     if user:
         login_user(user)
-        #vulnerable code
-        result = str(form.comment.data)
-        output = render_template_string(result)
 
-    # display hint message (gets value from hint button and flashes the hint message)
-    if str(request.form.get('hint')) == 'hint':
+        if request.method == 'POST':
+            result = str(form.comment.data)
+            output = render_template_string(result)
+        else:
+            output = render_template_string("")
+
+    if str(request.form.get('hint')) == 'hint':                                             # display hint message (gets value from hint button and flashes the hint message)
         flash("Use Jinja2 syntax and call upon the flask config object")
     return render_template('injection.html', form=form, output=output, time=time)
 
-#####################################Injection End####################################################
+#########################################INJECTION END####################################################
 
 
 #####################################Insecure Design Start########################################
 
-
-
 """
 Insecure design
 """
-
-class LoginForm(FlaskForm):
-    username = StringField(validators=[InputRequired()], render_kw={"placeholder": "Username = elonmusk"})
-    password = PasswordField(validators=[InputRequired()], render_kw={"placeholder": "Password"})
-    submit = SubmitField("Login")
-
-class ResetForm(FlaskForm):
-    username = StringField(validators=[InputRequired()], render_kw={"placeholder": "Username"})
-    favsubject = StringField(validators=[InputRequired()], render_kw={"placeholder": "Subject"})
-    favcolor = StringField(validators=[InputRequired()], render_kw={"placeholder": "Color"})
-    newpw = PasswordField(validators=[InputRequired()], render_kw={"placeholder": "Password"})
-    submit = SubmitField("Reset")
-
-@app.route('/insecure_design', methods=['GET', 'POST'])
-def insecure_design():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user =  Userdesign.query.filter_by(username=form.username.data).first()
-        if user:
-            if user.password == form.password.data:
-                login_user(user)
-                return redirect('/insecure_design/elonmusk')
-            else:
-                flash("Wrong username or password")
-                return redirect('/insecure_design')
-        if not user: 
-            flash("Wrong username or password")
-            return redirect('/insecure_design')
-    #hint button
-    if str(request.form.get('hint')) == 'hint':
-        flash("Do some research on Elon Musk and recover his password")
-    return render_template('/insecure_design.html', form=form)
-
-@login_required
-@app.route('/insecure_design/elonmusk', methods=['GET', 'POST'])
-def elon_profile():
-    return render_template('elonmusk.html')
-
-@app.route('/insecure_design/pwreset', methods=['GET', 'POST'])
-def pwreset():
-    form = ResetForm()
-    user =  Userdesign.query.filter_by(username=form.username.data).first()
-    #below checks if control questions exists in db and updates to new password
-    if request.method == 'POST':
-        if user:
-            if user.username == form.username.data:
-                if user.fav_subject == form.favsubject.data:
-                    if user.fav_color == form.favcolor.data:
-                        db.session.execute(update(Userdesign).where(Userdesign.username =='{}'.format(form.username.data)).values(password='{}'.format(form.newpw.data)))
-                        db.session.commit()
-                        flash("Password has successfully been changed")
-                        return redirect('/insecure_design/pwreset')
-        else:
-            flash('Username does not exist')
-            return redirect('/insecure_design/pwreset')
-                
-    return render_template('pwreset.html', form=form)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -254,25 +215,102 @@ try:
 except:
     print('Duplicated users')
 
-#####################################INSECURE DESIGN DONE############################################
+class LoginForm(FlaskForm):
+    username = StringField(validators=[InputRequired()], render_kw={"placeholder": "Username = elonmusk"})
+    password = PasswordField(validators=[InputRequired()], render_kw={"placeholder": "Password"})
+    submit = SubmitField("Login")
+
+class ResetForm(FlaskForm):
+    username = StringField(validators=[InputRequired()], render_kw={"placeholder": "Username"})
+    favsubject = StringField(validators=[InputRequired()], render_kw={"placeholder": "Subject"})
+    favcolor = StringField(validators=[InputRequired()], render_kw={"placeholder": "Color"})
+    newpw = PasswordField(validators=[InputRequired()], render_kw={"placeholder": "Password"})
+    submit = SubmitField("Reset")
+
+@login_required
+@app.route('/insecure_design', methods=['GET', 'POST'])
+def insecure_design():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = Userdesign.query.filter_by(username=form.username.data).first()
+        if user:
+            if user.password == form.password.data:
+                login_user(user)
+                return redirect('/insecure_design/elonmusk')
+            else:
+                flash("Wrong username or password")
+                return redirect('/insecure_design')
+        if not user: 
+            flash("Wrong username or password")
+            return redirect('/insecure_design')
+    
+    if str(request.form.get('hint')) == 'hint':
+        flash("Do some research on Elon Musk and recover his password")
+    return render_template('/insecure_design.html', form=form)
+
+@app.route('/insecure_design/pwreset', methods=['GET', 'POST'])
+def pwreset():
+    form = ResetForm()
+    user =  Userdesign.query.filter_by(username=form.username.data).first()
+    if request.method == 'POST':                                                                                                                                                        #checks if control questions exists in db and updates to new password
+        if user:
+            if user.username == form.username.data:
+                if user.fav_subject == form.favsubject.data:
+                    if user.fav_color == form.favcolor.data:
+                        db.session.execute(update(Userdesign).where(Userdesign.username =='{}'.format(form.username.data)).values(password='{}'.format(form.newpw.data)))
+                        db.session.commit()
+                        flash("Password has successfully been changed")
+                        return redirect('/insecure_design/pwreset')
+        else:
+            flash('Username does not exist')
+            return redirect('/insecure_design/pwreset')    
+    return render_template('pwreset.html', form=form)
+
+@login_required
+@app.route('/insecure_design/elonmusk', methods=['GET', 'POST'])
+def elon_profile():
+    return render_template('elonmusk.html')
 
 
+#####################################INSECURE DESIGN END############################################
 
+#####################################SECURITY MISCONFIGURATION START########################################
 
+class WP_loginForm(FlaskForm):
+    username = StringField([InputRequired()])
+    password = PasswordField([InputRequired()])
+    submit = SubmitField("Login")
 
 """
-Security misconfiguration theme?
+Security misconfiguration
 """
-@app.route('/security_misconfiguration', methods=['GET', 'POST'])
+@app.route('/security_misconfiguration/wp-login.php', methods=['GET', 'POST'])
 def security_misconfiguration():
-    return render_template('security_misconfiguration.html')
+    form = WP_loginForm()
+    if request.form.get('username') == "admin":
+        if request.form.get('password') == "password":
+            flash('FLAG{s3c_miscønf}')
 
 
+    return render_template('security_misconfiguration.html', form=form)
 
+
+#####################################SECURITY MISCONFIGURATION END########################################
+
+from flask_caching import Cache
+
+config = {
+    "DEBUG": True,          # some Flask specific configs
+    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
+app.config.from_mapping(config)
+cache = Cache(app)
 
 """
-Vulnerable and outdated components theme?
+Vulnerable and outdated components
 """
+@cache.cached(timeout=200)
 @app.route('/vulncomponent', methods=['GET', 'POST'])
 def vulncomponent():
     return render_template('vulncomponent.html')
@@ -281,9 +319,9 @@ def vulncomponent():
 
 
 
+
 """
-Prison theme. Scenario: You're a prisoner and need to break out of jail. The only way
-you can escape is to obtain the key/flag in which the prison guard posesses in his/her account.
+Identitification and authentication failures
 """
 @app.route('/authentication_failure', methods=['GET', 'POST'])
 def auth_fail():
@@ -291,9 +329,8 @@ def auth_fail():
 
 
 
-
 """
-Software and Data Integrity Failures theme?
+Software and Data Integrity Failures
 """
 @app.route('/software_data_integrity_failure', methods=['GET', 'POST'])
 def integrity_fail():
@@ -303,7 +340,7 @@ def integrity_fail():
 
 
 """
-Security Logging and Monitoring Failures theme?
+Security Logging and Monitoring Failures
 """
 @app.route('/log_and_monitor_failure', methods=['GET', 'POST'])
 def log_and_monitor_fail():
@@ -313,7 +350,7 @@ def log_and_monitor_fail():
 
 
 """
-Server-Side Request Forgery theme?
+Server-Side Request Forgery
 """
 @app.route('/ssrf', methods=['GET', 'POST'])
 def ssrf():
