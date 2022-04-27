@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  flask:
+    build: ./flask-docker
+    container_name: flask
+    ports:
+      - 80:5000
+  
+  plone:
+    build: ./plone-docker
+    container_name: plone
+    ports:
+      - 8080:8080

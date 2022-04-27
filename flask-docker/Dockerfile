@@ -14,10 +14,3 @@ EXPOSE 5000
 ENTRYPOINT ["python3"]
 CMD ["app.py"]
 
-
-# Vulnerable and outdated components
-FROM plone:5.2.4
-#environment variable to create a plone site
-ENV SITE=plone
-WORKDIR /plone/instance
-RUN echo FLAG{test} >> flag.txt

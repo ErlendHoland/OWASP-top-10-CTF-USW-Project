@@ -1,0 +1,3 @@
+FROM plone:5.2.4
+EXPOSE 8080
+ENV SITE=Plone
