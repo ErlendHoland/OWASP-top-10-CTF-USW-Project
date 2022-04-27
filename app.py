@@ -302,7 +302,8 @@ Vulnerable and outdated components (Plone CMS)
 
 @app.route('/vulncomponent', methods=['GET', 'POST'])
 def vulncomponent():
-    
+    if str(request.form.get('hint')) == 'hint':
+        flash('(CVE-2021-32633)')
     return render_template('vulncomponent.html')
 
 
