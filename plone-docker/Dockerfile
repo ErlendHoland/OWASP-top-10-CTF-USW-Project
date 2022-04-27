@@ -1,3 +1,9 @@
 FROM plone:5.2.4
-EXPOSE 8080
+
 ENV SITE=Plone
+WORKDIR /plone/instance
+RUN echo "CTF{VULN3R4BL3_4ND_ØUTD4T3D_CØMPØN3NT5}" > flag.txt
+
+EXPOSE 8080
+
+
