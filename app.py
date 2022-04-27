@@ -1,5 +1,5 @@
-from cmath import e
 from datetime import date, datetime
+from socket import timeout
 from flask import Flask, flash, render_template_string, send_file, session
 from flask_sqlalchemy import SQLAlchemy
 from pkg_resources import require
@@ -290,34 +290,20 @@ def security_misconfiguration():
     if request.form.get('username') == "admin":
         if request.form.get('password') == "password":
             flash('FLAG{s3c_miscønf}')
-
-
     return render_template('security_misconfiguration.html', form=form)
 
 
 #####################################SECURITY MISCONFIGURATION END########################################
 
-from flask_caching import Cache
-
-config = {
-    "DEBUG": True,          # some Flask specific configs
-    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
-    "CACHE_DEFAULT_TIMEOUT": 300
-}
-app.config.from_mapping(config)
-cache = Cache(app)
 
 """
-Vulnerable and outdated components
+Vulnerable and outdated components (Plone CMS)
 """
-@cache.cached(timeout=200)
+
 @app.route('/vulncomponent', methods=['GET', 'POST'])
 def vulncomponent():
+    
     return render_template('vulncomponent.html')
-
-
-
-
 
 
 """
