@@ -5,7 +5,7 @@
 
 
 # Setup instructions:
-## Run with docker compose (Required for challenge 6):
+## Run with docker compose: (Required for challenge 6)
 
 ``` 
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
