@@ -16,6 +16,7 @@ cd OWASP-top-10-CTF-USW-Project
 ```
 docker-compose up -d
 ```
+Access in browser http://localhost/
 
 ## Run with docker:
 
