@@ -8,13 +8,22 @@
 ## Run with docker compose: (Required for challenge 6)
 
 ``` 
+sudo apt-get install docker-compose -y
+```
+``` 
+sudo apt-get install curl -y
+```
+``` 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+``` 
 git clone https://github.com/ErlendHoland/OWASP-top-10-CTF-USW-Project.git
 ```
 ``` 
 cd OWASP-top-10-CTF-USW-Project
 ```
 ```
-docker-compose up -d
+sudo docker-compose up -d
 ```
 Access in browser http://localhost/
 
